@@ -6,7 +6,7 @@
 /*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:34:04 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/11 01:39:16 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:04:36 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_state
 	THINKING,
 	DEAD,
 	TAKING,
+	INITIAL,
 }	t_state;
 
 typedef struct s_philo
@@ -49,10 +50,8 @@ typedef struct s_philo
 	pthread_mutex_t	*lfork;
 	pthread_mutex_t	*rfork;
 
-	int				eating;
 	size_t			last_eat;
 	int				n_eat;
-	int				sleeping;
 	t_state			state;
 	struct s_table	*table;
 }	t_philo;
@@ -60,7 +59,7 @@ typedef struct s_philo
 typedef struct s_table
 {
 	pthread_mutex_t	*forks;
-	t_philo			*philos;
+	t_philo			*philo;
 	size_t			count;
 
 	size_t			time_to_sleep;
@@ -93,6 +92,7 @@ t_table			*parse_args(int argc, char **argv);
 /* ************************* PRINT ************************** */
 
 int				print_error(char *where, char *message, int error_code);
+void			print(t_philo *philo, char *message);
 
 /* ************************* TIME ************************** */
 
@@ -101,5 +101,26 @@ size_t			time_get_millis(struct timeval time);
 size_t			time_get_millis_now(void);
 size_t			time_get_millis_from_start(t_table *table);
 void			time_usleep(size_t	usec);
+
+/* ************************* PHILO ************************** */
+
+void			philo_init(t_philo *philo, t_table *table, int id);
+void			philo_forks_init(t_philo *philo, t_table *table, int id);
+void			*philo_routine(void *data);
+void			threads_start(t_table *table);
+void			threads_wait(t_table *table);
+
+/* ************************* PHILO  CHECKER************************** */
+
+size_t			philo_check_eat(t_table *table);
+void			philo_check_death(t_table *table);
+
+/* ************************* PHILO ACTIONS ************************** */
+
+void			philo_use_fork(t_philo *philo,
+					int (*mutex_action)(), char *message);
+void			philo_eat(t_philo *philo);
+void			philo_sleep(t_philo *philo);
+void			philo_think(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:23:46 by aabduvak          #+#    #+#              #
-#    Updated: 2022/04/11 01:43:34 by aabduvak         ###   ########.fr        #
+#    Updated: 2022/04/12 02:14:20 by aabduvak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME) : $(OBJS)
 
 .c.o:
 	@echo $(YELLOW) "Compiling..." $< $(END)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ -g
 
 # $< input files
 # $@ output files

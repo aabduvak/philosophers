@@ -6,7 +6,7 @@
 /*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 01:04:15 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/11 01:21:09 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/11 23:33:42 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	check_negative(const char *str)
 		return (0);
 	return (1);
 }
-
 
 int	check_args(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 01:17:51 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/11 01:31:41 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/12 02:12:58 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_table	*parse_args(int argc, char **argv)
 
 	if (!check_args(argc, argv))
 		return (NULL);
-	table = (t_table *) malloc(sizeof(table));
+	table = (t_table *) malloc(sizeof(t_table));
 	if (!table)
 		return (NULL);
 	table->count = ft_atoi(argv[1]);
@@ -30,9 +30,9 @@ t_table	*parse_args(int argc, char **argv)
 	else
 		table->min_to_eat = -1;
 	table->death = 0;
-	table->philos = (t_philo *) malloc(sizeof(t_philo) * table->count);
-	table->philos = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * \
-		table->count);
+	table->philo = malloc(sizeof(t_philo) * (table->count + 1));
+	table->forks = malloc(sizeof(pthread_mutex_t) * \
+		(table->count + 1));
 	table->time = time_get_now();
 	return (table);
 }
