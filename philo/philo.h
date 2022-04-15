@@ -6,7 +6,7 @@
 /*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:34:04 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/15 02:54:09 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:35:17 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*lfork;
 	pthread_mutex_t	*rfork;
-
+	pthread_mutex_t	*last_eat_check;
+	pthread_mutex_t	*n_eat_check;
 	size_t			last_eat;
 	int				n_eat;
 	t_state			state;
+	pthread_mutex_t	*state_check;
 	struct s_table	*table;
 }	t_philo;
 
@@ -60,7 +62,7 @@ typedef struct s_table
 {
 	pthread_mutex_t	*forks;
 	t_philo			*philo;
-	size_t			count;
+	int				count;
 
 	size_t			time_to_sleep;
 	size_t			time_to_eat;
@@ -69,6 +71,7 @@ typedef struct s_table
 	int				death;
 
 	struct timeval	time;
+	pthread_mutex_t	*death_check;
 	pthread_mutex_t	is_diying;
 	pthread_mutex_t	is_printing;
 }	t_table;
@@ -122,5 +125,19 @@ void			philo_use_fork(t_philo *philo,
 void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
+
+/* ************************* GET ************************** */
+
+int				get_death_value(t_table *table);
+t_state			get_state(t_philo *philo);
+size_t			get_last_meal(t_philo *philo);
+int				get_n_eat(t_philo *philo);
+
+/* ************************* SET ************************** */
+
+void			set_death_value(t_table *table, int value);
+void			set_n_eat(t_philo *philo, int value);
+void			set_last_meal(t_philo *philo, size_t value);
+void			set_state(t_philo *philo, t_state value);
 
 #endif

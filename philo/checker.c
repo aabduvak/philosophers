@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
+/*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 01:04:15 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/11 23:33:42 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:29:40 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ int	check_args(int argc, char **argv)
 		if (!check_int(argv[i]))
 			return (print_error("parser", "argument should be numeric.", 0));
 		if (!check_negative(argv[i]))
-			return (print_error("parser", "arggument should be positive.", 0));
+			return (print_error("parser", "argument should be positive.", 0));
+		if (!ft_atoi(argv[i]))
+			return (print_error("parser",
+					"argument should be greater than zero.", 0));
 	}
 	return (1);
 }

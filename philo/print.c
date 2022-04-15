@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
+/*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 00:59:44 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/12 00:44:14 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 14:37:21 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print(t_philo *philo, char *message)
 	if (message != NULL)
 	{
 		pthread_mutex_lock(&philo->table->is_printing);
-		if (!philo->table->death)
+		if (!get_death_value(philo->table))
 			printf("%zu %zu %s\n", \
 				time_get_millis_from_start(philo->table), \
 				philo->id, \

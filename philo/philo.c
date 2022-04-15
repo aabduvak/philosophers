@@ -6,7 +6,7 @@
 /*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:51:04 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/15 02:54:02 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:44:35 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void	philo_init(t_philo *philo, t_table *table, int id)
 	philo->n_eat = 0;
 	philo->state = INITIAL;
 	philo->last_eat = time_get_millis_now();
+	philo->state_check = malloc(sizeof(pthread_mutex_t));
+	philo->last_eat_check = malloc(sizeof(pthread_mutex_t));
+	philo->n_eat_check = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(table->forks + id, NULL);
+	pthread_mutex_init(philo->state_check, NULL);
+	pthread_mutex_init(philo->last_eat_check, NULL);
 }
 
 void	philo_forks_init(t_philo *philo, t_table *table, int id)
@@ -38,7 +43,7 @@ void	*philo_routine(void *data)
 	philo = (t_philo *) data;
 	if (philo->id % 2 == 0)
 		time_usleep(10);
-	while (!philo->table->death)
+	while (!get_death_value(philo->table))
 	{
 		philo_eat(philo);
 		philo_sleep(philo);
@@ -49,14 +54,14 @@ void	*philo_routine(void *data)
 
 size_t	philo_check_eat(t_table *table)
 {
-	size_t	i;
+	int	i;
 
 	if (table->min_to_eat < 0)
 		return (0);
 	i = -1;
-	while (++i < table->count)
+	while (++i < (int)table->count)
 	{
-		if (table->philo[i].n_eat < table->min_to_eat)
+		if (get_n_eat(table->philo + i) < table->min_to_eat)
 			return (0);
 	}
 	return (1);
@@ -64,23 +69,23 @@ size_t	philo_check_eat(t_table *table)
 
 void	philo_check_death(t_table *table)
 {
-	size_t	i;
+	int	i;
 
 	if (table->count == 1)
 		print(table->philo, HAS_DIED);
 	while (table->count > 1)
 	{
 		i = -1;
-		while (++i < table->count)
+		while (++i < (int)table->count)
 		{
-			if (table->philo[i].state == EATING)
+			if (get_state(table->philo + i) == EATING)
 				continue ;
 			pthread_mutex_lock(&table->is_diying);
 			if (time_get_millis_now() - \
-			table->philo[i].last_eat >= table->time_to_die)
+			get_last_meal(table->philo + i) > table->time_to_die)
 			{
 				print(table->philo + i, HAS_DIED);
-				table->death = 1;
+				set_death_value(table, 1);
 				return ;
 			}
 			pthread_mutex_unlock(&table->is_diying);
@@ -88,5 +93,5 @@ void	philo_check_death(t_table *table)
 		if (philo_check_eat(table))
 			break ;
 	}
-	table->death = 1;
+	set_death_value(table, 1);
 }
