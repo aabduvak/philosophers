@@ -44,9 +44,6 @@ Of course, if they borrow a neighbor's fork, the neighbor can't use the fork. Th
 - Unix
 - Algorithms & AI
 
-#### My grade
-<img src="./images/grade.png" width="150" height="150"/>
-
 ## Functions ##
 
 Only the following functions are allowed to be used in this project on mandatory part:<br>
