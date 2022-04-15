@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
+/*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:51:04 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/12 02:04:51 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 02:54:02 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	philo_init(t_philo *philo, t_table *table, int id)
 	philo->n_eat = 0;
 	philo->state = INITIAL;
 	philo->last_eat = time_get_millis_now();
-	pthread_mutex_init(&table->forks[id], NULL);
+	pthread_mutex_init(table->forks + id, NULL);
 }
 
 void	philo_forks_init(t_philo *philo, t_table *table, int id)

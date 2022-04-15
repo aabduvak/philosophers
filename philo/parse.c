@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
+/*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 01:17:51 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/12 02:12:58 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 02:31:35 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ t_table	*parse_args(int argc, char **argv)
 		table->min_to_eat = -1;
 	table->death = 0;
 	table->philo = malloc(sizeof(t_philo) * (table->count + 1));
-	table->forks = malloc(sizeof(pthread_mutex_t) * \
-		(table->count + 1));
+	table->forks = malloc(sizeof(pthread_mutex_t) * (table->count + 1));
 	table->time = time_get_now();
 	return (table);
 }

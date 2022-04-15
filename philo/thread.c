@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+        */
+/*   By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:40:01 by aabduvak          #+#    #+#             */
-/*   Updated: 2022/04/12 01:18:54 by aabduvak         ###   ########.fr       */
+/*   Updated: 2022/04/15 02:44:51 by aabduvak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	threads_start(t_table *table)
 	i = -1;
 	while (++i < table->count)
 		philo_forks_init(table->philo + i, table, i);
+	i = -1;
 	while (++i < table->count)
 		pthread_create(&table->philo[i].thread, NULL, \
 				philo_routine, table->philo + i);
