@@ -6,15 +6,15 @@
 <br>
 <p align="center">
 
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/abdulazizabduvakhobov/philosophers?color=3de069">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/aabduvak/philosophers?color=3de069">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/abdulazizabduvakhobov/philosophers?color=3de069">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/aabduvak/philosophers?color=3de069">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/abdulazizabduvakhobov/philosophers?color=3de069">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/aabduvak/philosophers?color=3de069">
   
-  <img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/abdulazizabduvakhobov/GNL?color=3de069" />
+  <img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/aabduvak/philosophers?color=3de069" />
 	
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/abdulazizabduvakhobov/GNL?color=3de069" />
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aabduvak/philosophers?color=3de069" />
 
 </p>
 
@@ -61,7 +61,7 @@ Only the following functions are allowed to be used in this project on mandatory
 
 ```bash
 # Clone this project
-git clone https://github.com/abdulazizabduvakhobov/philosophers
+git clone https://github.com/aabduvak/philosophers
 # Access
 cd philosophers/philo/
 # Compile the program
