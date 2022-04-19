@@ -18,8 +18,6 @@
 
 </p>
 
-<hr>
-
 <p align="center">
   <a href="#about">About</a> &#xa0; | &#xa0; 
   <a href="#links">Links</a> &#xa0; | &#xa0;
@@ -28,7 +26,7 @@
   <a href="https://github.com/abdulazizabduvakhobov" target="_blank">Author</a>
 </p>
 
-<br>
+<hr>
 
 ## About ##
 
@@ -43,6 +41,9 @@ Of course, if they borrow a neighbor's fork, the neighbor can't use the fork. Th
 - Rigor
 - Unix
 - Algorithms & AI
+
+#### My grade
+<img src="./images/grade.png" width="150" height="150"/>
 
 ## Functions ##
 
