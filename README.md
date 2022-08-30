@@ -11,9 +11,7 @@
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/aabduvak/philosophers?color=3de069">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/aabduvak/philosophers?color=3de069">
-  
-  <img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/aabduvak/philosophers?color=3de069" />
-	
+  	
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aabduvak/philosophers?color=3de069" />
 
 </p>
